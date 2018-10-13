@@ -68,3 +68,14 @@ describe('La calificación', function() {
         expect(nuevoArrayDeCalificaciones).to.equal(arrayDeCalificaciones+1);
     })
 })
+
+//test función buscarRestaurante(id)
+
+describe('Búsqueda de un restaurante', function(){
+    it('Debe corresponder el id con el nombre del restaurante', function(){
+        const idDelRestaurante = listado.buscarRestaurante(3).id
+        
+        //comparo el resultado con el número del id
+        expect(idDelRestaurante).to.equal(3);
+    })
+})
