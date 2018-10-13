@@ -42,3 +42,29 @@ describe('Puntuaciones', function () {
         expect(listadoDeCalificaciones.obtenerPuntuacion()).to.equal(0); 
     })
 })
+
+//test función calificar()
+
+describe('La calificación', function() {
+    it('Debe ser en números', function(){
+        let calificacionEsperada = 5;
+        expect(calificacionEsperada).to.be.a('number');
+    })
+
+    it('Debe ser mayor a 0 y menos a 10', function(){
+        //cómo meto el >0 && <=10 ???
+    })
+
+    it('Debe aumentar el largo del array', function(){
+        let calificacionesDadas = listado.restaurantes[2].calificaciones;
+        let arrayDeCalificaciones = calificacionesDadas.length;
+        let calificar = Restaurant.prototype.calificar(); //intenté escribir el código así porque me tiraba que calificar no existía
+        //agrego una calificacion al arrayDeCalificaciones
+        calificacionesDadas.calificar(8);
+        //creo una variable con el nuevo array
+        let nuevoArrayDeCalificaciones = calificacionesDadas;
+        
+        //comparo el array nuevo con el array anterior+1
+        expect(nuevoArrayDeCalificaciones).to.equal(arrayDeCalificaciones+1);
+    })
+})
