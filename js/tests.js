@@ -76,11 +76,20 @@ describe('La calificación', function () {
 
 describe('Búsqueda de un restaurante', function () {
     it('Debe corresponder el id con el nombre del restaurante', function () {
-        const idDelRestaurante = listado.buscarRestaurante(3).id
-
+        const idDelRestaurante = listado.restaurantes[4].id;
+    
         //comparo el resultado con el número del id
-        expect(idDelRestaurante).to.equal(3);
+        expect(idDelRestaurante).to.equal(5);
     })
 })
 
 //test función obtenerRestaurantes()
+
+describe('La función obtenerRestaurantes()', function(){
+    it('Debe retornar un restaurante según los filtros predeterminados', function(){
+        let restauranteFiltrado = listado.obtenerRestaurantes('Asiática', 'Berlín', '12:00');
+        
+        //comparo el resultado con el nombre del restaurante
+        expect(restauranteFiltrado[0].nombre).to.eql("Jolly");
+    })
+})
