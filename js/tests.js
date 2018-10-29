@@ -19,23 +19,23 @@ describe('Horario reservado', function () {
 
 describe('Puntuaciones', function () {
     it('Se ejecuta el promedio correctamente', function () {
-        let calificacionesPorDefault = listado.restaurantes[1].calificaciones;
+        let restauranteSeleccionado = listado.restaurantes[0];
 
-        let promedio = calificacionesPorDefault.reduce(function (a, b) {
+        let promedio = restauranteSeleccionado.calificaciones.reduce(function (a, b) {
             return a + b
-        }) / calificacionesPorDefault.length;
+        }) / restauranteSeleccionado.calificaciones.length;
 
-        expect(calificacionesPorDefault.obtenerPuntuacion()).to.equal(promedio); //me tira que no es función el obtenerpuntuacion()
+        expect(restauranteSeleccionado.obtenerPuntuacion()).to.equal(promedio); //funciona!!
     })
 
     it('Deben dar 0 si no hay calificación', function () {
-        let listadoDeCalificaciones = listado.restaurantes[1].calificaciones;
+        let restauranteSeleccionado = listado.restaurantes[0];
         //tengo que recorrer el listado e ir sacando calificaciones para que de 0
-        for (let i = listadoDeCalificaciones.length; i > 0; i--) {
-            listadoDeCalificaciones.pop();
+        for (let i = restauranteSeleccionado.calificaciones.length; i > 0; i--) {
+            restauranteSeleccionado.calificaciones.pop();
         }
 
-        expect(listadoDeCalificaciones.obtenerPuntuacion()).to.equal(0);
+        expect(restauranteSeleccionado.obtenerPuntuacion()).to.equal(0);
     })
 })
 
@@ -48,14 +48,14 @@ describe('La calificación', function () {
     })
 
     it('Debe ser mayor a 0 y menor o igual a 10', function () {
-        //cómo meto el >0 && <=10 ???
+        //guardo el listado de calificaciones y compruebo que sean > a 0 y <= 10
         let testCalificaciones = listado.restaurantes[3].calificaciones
-        let validacionCalificaciones = function(){
+        let validacionCalificaciones = function () {
             if (testCalificaciones > 0 && testCalificaciones <= 10) {
-             return true   
+                return testCalificaciones > 0 && testCalificaciones <= 10
             }
         }
-       // expect(testCalificaciones.calificar())to.equal(validacionCalificaciones);
+        expect(testCalificaciones.calificar()).to.equal(validacionCalificaciones);
     })
 
     it('Debe aumentar el largo del array', function () {
@@ -77,7 +77,7 @@ describe('La calificación', function () {
 describe('Búsqueda de un restaurante', function () {
     it('Debe corresponder el id con el nombre del restaurante', function () {
         const idDelRestaurante = listado.restaurantes[4].id;
-    
+
         //comparo el resultado con el número del id
         expect(idDelRestaurante).to.equal(5);
     })
@@ -85,10 +85,10 @@ describe('Búsqueda de un restaurante', function () {
 
 //test función obtenerRestaurantes()
 
-describe('La función obtenerRestaurantes()', function(){
-    it('Debe retornar un restaurante según los filtros predeterminados', function(){
+describe('La función obtenerRestaurantes()', function () {
+    it('Debe retornar un restaurante según los filtros predeterminados', function () {
         let restauranteFiltrado = listado.obtenerRestaurantes('Asiática', 'Berlín', '12:00');
-        
+
         //comparo el resultado con el nombre del restaurante
         expect(restauranteFiltrado[0].nombre).to.eql("Jolly");
     })
