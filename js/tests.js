@@ -49,23 +49,22 @@ describe('La calificación', function () {
 
     it('Debe ser mayor a 0 y menor o igual a 10', function () {
         //guardo el listado de calificaciones y compruebo que sean > a 0 y <= 10
-        let testCalificaciones = listado.restaurantes[3].calificaciones
+        let testCalificaciones = listado.restaurantes[3]
         let validacionCalificaciones = function () {
-            if (testCalificaciones > 0 && testCalificaciones <= 10) {
-                return testCalificaciones > 0 && testCalificaciones <= 10
+            if (testCalificaciones.calificaciones > 0 && testCalificaciones.calificaciones <= 10) {
+                return testCalificaciones.calificaciones > 0 && testCalificaciones.calificaciones <= 10
             }
         }
-        expect(testCalificaciones.calificar()).to.equal(validacionCalificaciones);
+        expect(testCalificaciones.calificar()).to.equal(validacionCalificaciones); //sigue sin funcionar ¬¬
     })
 
     it('Debe aumentar el largo del array', function () {
-        let calificacionesDadas = listado.restaurantes[2].calificaciones;
-        let arrayDeCalificaciones = calificacionesDadas.length;
-        let calificar = Restaurant.prototype.calificar(); //intenté escribir el código así porque me tiraba que calificar no existía
-        //agrego una calificacion al arrayDeCalificaciones
-        calificacionesDadas.calificar(8);
+        let restauranteSeleccionado = listado.restaurantes[2];
+        let arrayDeCalificaciones = listado.restaurantes[2].calificaciones.length;
+        //califico al restaurante
+        restauranteSeleccionado.calificar(8);
         //creo una variable con el nuevo array
-        let nuevoArrayDeCalificaciones = calificacionesDadas;
+        let nuevoArrayDeCalificaciones = listado.restaurantes[2].calificaciones.length;
 
         //comparo el array nuevo con el array anterior+1
         expect(nuevoArrayDeCalificaciones).to.equal(arrayDeCalificaciones + 1);
