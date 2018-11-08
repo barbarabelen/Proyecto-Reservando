@@ -47,18 +47,38 @@ describe('La calificación', function () {
         expect(calificacionEsperada).to.be.a('number');
     })
 
-    it('Debe ser mayor a 0 y menor o igual a 10', function () {
-        //guardo el listado de calificaciones y compruebo que sean > a 0 y <= 10
-        let testCalificaciones = listado.restaurantes[3]
-        let validacionCalificaciones = function () {
-            if (testCalificaciones.calificaciones > 0 && testCalificaciones.calificaciones <= 10) {
+    it('Debe ser mayor a 0', function () {
+        //guardo el listado de calificaciones y compruebo que sean > a 0
+        let listadoRestaurante = listado.restaurantes[3]
+        let arrayDeCalificaciones = listado.restaurantes[3].calificaciones.length;
+        //califico al restaurante
+        listadoRestaurante.calificar(0);
+        let nuevoArrayCalificandoCero = listado.restaurantes[3].calificaciones.length;
+        //comparo el array nuevo con el anterior para corroborar que no haya aumentado su largo
+        expect(nuevoArrayCalificandoCero).to.equal(arrayDeCalificaciones);
+
+
+        /*let validacionCalificaciones = function () {
+            if (testCalificaciones.calificaciones > 0 && testCalificaciones.calificaciones < 10) {
                 return testCalificaciones.calificaciones > 0 && testCalificaciones.calificaciones <= 10
             }
         }
-        expect(testCalificaciones.calificar()).to.equal(validacionCalificaciones); //sigue sin funcionar ¬¬
+        expect(testCalificaciones.calificar()).to.equal(validacionCalificaciones); //sigue sin funcionar ¬¬*/
     })
 
-    it('Debe aumentar el largo del array', function () {
+    it('Debe ser menor a 10', function(){
+        //guardo el listado de calificaciones y compruebo que sean < a 10
+        let listadoRestaurante = listado.restaurantes[3]
+        let arrayDeCalificaciones = listado.restaurantes[3].calificaciones.length;
+        //califico al restaurante
+        listadoRestaurante.calificar(11);
+        let nuevoArrayCalif = listado.restaurantes[3].calificaciones.length;
+        //comparo el array nuevo con el anterior para corroborar que no haya aumentado su largo
+        expect(nuevoArrayCalif).to.equal(arrayDeCalificaciones);
+
+    })
+
+    it('Debe aumentar el largo del array si cumple con las validaciones correspondientes', function () {
         let restauranteSeleccionado = listado.restaurantes[2];
         let arrayDeCalificaciones = listado.restaurantes[2].calificaciones.length;
         //califico al restaurante
