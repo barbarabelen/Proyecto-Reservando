@@ -30,14 +30,33 @@ Restaurant.prototype.calificar = function(nuevaCalificacion) {
 Restaurant.prototype.obtenerPuntuacion = function() {
     if (this.calificaciones.length === 0) {
         return 0;
-    } else {
-        var sumatoria = 0;
-        for (var i = 0; i < this.calificaciones.length; i++) {
-            sumatoria += this.calificaciones[i]
-        }
-        var promedio = sumatoria / this.calificaciones.length;
-        return Math.round(promedio * 10) / 10;
-    }
-
+    } 
+    // else {
+    //     var sumatoria = 0;
+    //     for (var i = 0; i < this.calificaciones.length; i++) {
+    //         sumatoria += this.calificaciones[i]
+    //     }
+    //     var promedio = sumatoria / this.calificaciones.length;
+    //     return Math.round(promedio * 10) / 10;
+    // }
+    return promedio(this.calificaciones)
 }
 
+function sumatoria(numeros){
+    return numeros.reduce(function(a, b){
+        return a + b;
+    },0)
+}
+
+function promedio(numeros){
+    return (sumatoria(numeros))/numeros.length;
+}
+
+//hay que validar que no se divida por 0 y que sea un número entero
+function division(a, b){
+    if(b === 0){
+        return NaN
+    } else if(a % b){ //validar que sea un entero no funciona :/
+    return a/b;
+    }
+}
