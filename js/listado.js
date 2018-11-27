@@ -34,12 +34,15 @@ function elementosUnicos(varios) {
 
 //Obtiene todas las ciudades de los restaurantes sin repetidos
 Listado.prototype.obtenerCiudad = function () {
-    //Array donde se van a ir agregando las ciudades (van a estar repetidas)
-    var ciudadesRepetidas = [];
-    //Se recorre el array de restaurantes y se va agregando al array creado, todas las ubicaciones o ciudades encontradas
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        ciudadesRepetidas.push(this.restaurantes[i].ubicacion);
-    }
+    // //Array donde se van a ir agregando las ciudades (van a estar repetidas)
+    // var ciudadesRepetidas = [];
+    // //Se recorre el array de restaurantes y se va agregando al array creado, todas las ubicaciones o ciudades encontradas
+    // for (var i = 0; i < this.restaurantes.length; i++) {
+    //     ciudadesRepetidas.push(this.restaurantes[i].ubicacion);
+    // }
+    //función refactorizada
+    const ciudadesRepetidas = this.restaurantes.map(res => res.ubicacion);
+    
 
     // var ciudadesSinRepetir = ciudadesRepetidas.filter(function (elem, index, self) {
     // return index === self.indexOf(elem);
@@ -51,10 +54,13 @@ Listado.prototype.obtenerCiudad = function () {
 
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a ObtenerCiudad()
 Listado.prototype.obtenerRubro = function () {
-    var rubrosRepetidos = [];
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        rubrosRepetidos.push(this.restaurantes[i].rubro);
-    }
+    // var rubrosRepetidos = [];
+    // for (var i = 0; i < this.restaurantes.length; i++) {
+    //     rubrosRepetidos.push(this.restaurantes[i].rubro);
+    // }
+
+    //función refactorizada
+    const rubrosRepetidos = this.restaurantes.map(res => res.rubro);
 
     // var rubrosSinRepetir = rubrosRepetidos.filter(function (elem, index, self) {
     // return index === self.indexOf(elem);
@@ -68,11 +74,13 @@ Listado.prototype.obtenerRubro = function () {
 //convertir en uno solo
 Listado.prototype.obtenerHorario = function () {
     //En este array se van a cargar los arrays de horarios, que luego vamos convertir en un solo array
-    var arregloHorarios = [];
-    //Recorremos el array de restaurantes y vamos agregando todos los array de horarios
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        arregloHorarios.push(this.restaurantes[i].horarios);
-    }
+    // var arregloHorarios = [];
+    // //Recorremos el array de restaurantes y vamos agregando todos los array de horarios
+    // for (var i = 0; i < this.restaurantes.length; i++) {
+    //     arregloHorarios.push(this.restaurantes[i].horarios);
+    // }
+    //función refactorizada
+    const arregloHorarios = this.restaurantes.map(res => res.horarios);
 
     //En este arreglo vamos a poner todos los horarios, uno por uno
     var horarioUnoPorUno = [];
