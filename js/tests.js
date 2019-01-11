@@ -104,3 +104,21 @@ describe('La función obtenerRestaurantes()', function () {
         expect(restauranteFiltrado[0].nombre).to.eql("Jolly");
     })
 })
+
+//test TDD funcionalidad Reservas
+
+//test sobre el precio base
+describe('Función precioBase de la reserva', function(){
+    it('Debe calculcar correctamente el precioBase', function(){
+        expect(listaDeReservas[0].precioBase()).to.equal(2800);
+        expect(listaDeReservas[2].precioBase()).to.equal(300);
+    })
+})
+
+//test sobre el precio total con adicionales y descuentos
+describe('Función precioTotal de la reserva', function(){
+    it('Debe calcular correctamente el precioTotal', function(){
+        expect(listaDeReservas[0].precioTotal()).to.equal(2310);
+        expect(listaDeReservas[1].precioTotal()).to.equal(100);
+    })
+})
