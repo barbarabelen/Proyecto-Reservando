@@ -25,7 +25,7 @@ describe('Puntuaciones', function () {
             return a + b
         }) / restauranteSeleccionado.calificaciones.length;
 
-        expect(restauranteSeleccionado.obtenerPuntuacion()).to.equal(promedio); //funciona!!
+        expect(restauranteSeleccionado.obtenerPuntuacion()).to.equal(promedio); 
     })
 
     it('Deben dar 0 si no hay calificación', function () {
@@ -56,14 +56,6 @@ describe('La calificación', function () {
         let nuevoArrayCalificandoCero = listado.restaurantes[3].calificaciones.length;
         //comparo el array nuevo con el anterior para corroborar que no haya aumentado su largo
         expect(nuevoArrayCalificandoCero).to.equal(arrayDeCalificaciones);
-
-
-        /*let validacionCalificaciones = function () {
-            if (testCalificaciones.calificaciones > 0 && testCalificaciones.calificaciones < 10) {
-                return testCalificaciones.calificaciones > 0 && testCalificaciones.calificaciones <= 10
-            }
-        }
-        expect(testCalificaciones.calificar()).to.equal(validacionCalificaciones); //sigue sin funcionar ¬¬*/
     })
 
     it('Debe ser menor a 10', function(){
