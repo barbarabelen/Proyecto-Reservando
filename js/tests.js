@@ -115,10 +115,10 @@ describe('Función precioBase de la reserva', function(){
     })
 })
 
-//test sobre el precio total con adicionales y descuentos
-describe('Función precioTotal de la reserva', function(){
-    it('Debe calcular correctamente el precioTotal', function(){
-        expect(listaDeReservas[0].precioTotal()).to.equal(2310);
-        expect(listaDeReservas[1].precioTotal()).to.equal(100);
+//test sobre el precio final con adicionales y descuentos
+describe('Función precioFinal de la reserva', function(){
+    it('Debe calcular correctamente el precioFinal', function(){
+        expect(listaDeReservas[0].precioFinal()).to.equal(2310);
+        expect(listaDeReservas[1].precioFinal()).to.equal(100);
     })
 })
