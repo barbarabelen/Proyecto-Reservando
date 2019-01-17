@@ -39,10 +39,10 @@ Restaurant.prototype.obtenerPuntuacion = function() {
     //     var promedio = sumatoria / this.calificaciones.length;
     //     return Math.round(promedio * 10) / 10;
     // }
-    return this.promedio(this.calificaciones)
+    return promedio(this.calificaciones)
 }
 
-Restaurant.prototype.sumatoria = function(numeros){
+function sumatoria(numeros){
     return numeros.reduce(function(a, b){
         return a + b;
     },0)
@@ -51,8 +51,8 @@ Restaurant.prototype.sumatoria = function(numeros){
 // function promedio(numeros){
 //     return (sumatoria(numeros))/numeros.length;
 // }
-Restaurant.prototype.promedio = function(arregloAPromediar){
-    return Math.round((this.sumatoria(arregloAPromediar) / arregloAPromediar.length) * 10) / 10;
+function promedio(arregloAPromediar){
+    return (sumatoria(arregloAPromediar)) / arregloAPromediar.length;
 }
 
 //hay que validar que no se divida por 0 y que sea un número entero

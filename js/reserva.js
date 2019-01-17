@@ -6,23 +6,18 @@ const Reserva = function(horario, cantidadDePersonas, precioPorPersona, codigoDe
     this.codigoDeDescuento = codigoDeDescuento
 }
 
-//lista de reservas
-const listaDeReservas = [
-    new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1"),
-    new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200"),
-];
 
 //función que calcula el precio base de la reserva
 Reserva.prototype.precioBase = function(){
-    this.cantidadDePersonas * this.precioPorPersona;
+    return this.cantidadDePersonas * this.precioPorPersona;
 }
 
 //función que calcula el precio final de la reserva
 Reserva.prototype.precioFinal = function(){
     const precioBase = this.precioBase();
-    const adicional = this.adicionales(precioBase);
-    const descuento = this.descuentos(precioBase);
-    return precioBase + adicional - descuento;
+    const adicionales = this.adicionales(precioBase);
+    const descuentos = this.descuentos(precioBase);
+    return precioBase + adicionales - descuentos;
 }
 
 //función que calcula el adicional
@@ -41,8 +36,8 @@ Reserva.prototype.adicionalesPorFinDeSemana = function(precioBase){
 
 Reserva.prototype.adicionalesPorHorario = function(precioBase){
     //adicional del 5% si es de 13 a 14hs o 20 a 21hs
-    let horarioEspecialDia = this.horario.getHours() === 13 || this.horario.getHours() === 14;
-    let horarioEspecialNoche = this.horario.getHours() === 20 || this.horario.getHours() === 21;
+    let horarioEspecialDia = this.horario.getHours() === 13 || (this.horario.getHours() === 14 && this.horario.getMinutes() === 0);
+    let horarioEspecialNoche = this.horario.getHours() === 20 || (this.horario.getHours() === 21 && this.horario.getMinutes() === 0);
     if(horarioEspecialDia || horarioEspecialNoche){
         return precioBase * .05;
     };

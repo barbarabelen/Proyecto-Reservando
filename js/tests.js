@@ -110,15 +110,15 @@ describe('La función obtenerRestaurantes()', function () {
 //test sobre el precio base
 describe('Función precioBase de la reserva', function(){
     it('Debe calculcar correctamente el precioBase', function(){
-        expect(listaDeReservas[0].precioBase()).to.equal(2800);
-        expect(listaDeReservas[2].precioBase()).to.equal(300);
+        const res1 =  new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1");
+        expect(res1.precioBase()).to.be.equal(2800);
     })
 })
 
 //test sobre el precio final con adicionales y descuentos
 describe('Función precioFinal de la reserva', function(){
-    it('Debe calcular correctamente el precioFinal', function(){
-        expect(listaDeReservas[0].precioFinal()).to.equal(2310);
-        expect(listaDeReservas[1].precioFinal()).to.equal(100);
+    it('Debe calculcar correctamente el precioFinal', function(){
+        const res2 =   new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200");
+        expect(res2.precioFinal()).to.be.equal(100);
     })
 })
